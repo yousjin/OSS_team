@@ -1,6 +1,8 @@
 name: Mocha test
 
 on: [push]
+    [pull request]
+
  
 jobs:
   build:
