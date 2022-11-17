@@ -23,6 +23,7 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm install mocha -g
+        npm i dotenv
         mocha test.js
       env:
         CI: true
