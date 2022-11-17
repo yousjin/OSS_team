@@ -1,6 +1,6 @@
 name: Mocha test
 
-on: [push, pull request]
+on: [push, pull_request]
 
  
 jobs:
