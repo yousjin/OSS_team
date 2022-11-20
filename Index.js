@@ -29,8 +29,7 @@ rtm.on('message', (message) => {
     var str = text.toString(text);
     if (str.charAt(str.length-1) == '부') {
       searchPlace(rtm, channel, str);
-    }
-    else {
+    } else {
       switch (text) {
         case 'hi':
           greeting(rtm, channel);
