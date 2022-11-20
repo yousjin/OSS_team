@@ -9,7 +9,7 @@ const searchPlace = function (rtm, channel, str, num) {
     const article = fs.readFileSync("dept.txt");
     const textSplitArr = article.toString().split("\n");
 
-    var n = num;;
+    var n = num;
     if(n == -1) {
       n = DeptKorArr.indexOf(str);
     }
