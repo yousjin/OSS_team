@@ -19,6 +19,9 @@ const greeting = require('./greeting');
 const square = require('./square');
 const searchPlace = require('./searchPlace');
 
+const DeptEng = 'Architectural Engineering,Mechanical Engineering,Urban Engineering,Electronic Engineering,Computer Science and Engineering,Chemical Engineering,Accounting,International Trade,Korean Language and Literature,Library and Information Science';
+const DeptEngArr = DeptEng.toString().split(',');
+
 rtm.on('message', (message) => {
   const { channel } = message;
   const { text } = message;
@@ -27,8 +30,9 @@ rtm.on('message', (message) => {
     square(rtm, text, channel);
   } else {
     var str = text.toString(text);
-    if (str.charAt(str.length-1) == '부') {
-      searchPlace(rtm, channel, str);
+    var num = DeptEngArr.indexOf(str);
+    if (num != -1 || str.charAt(str.length-1) == '부') {
+      searchPlace(rtm, channel, str, num);
     } else {
       switch (text) {
         case 'hi':
