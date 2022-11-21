@@ -29,6 +29,7 @@ rtm.on('message', (message) => {
   if (Ishaksa==1){
     schedule(rtm, text, channel);
     Ishaksa=0;
+    return;
   }
 
   if (!isNaN(text)) {
