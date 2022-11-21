@@ -26,12 +26,12 @@ rtm.on('message', (message) => {
   const { channel } = message;
   const { text } = message;
 
-  if (!isNaN(text)) {
+  if (!Number.isNaN(text)) {
     square(rtm, text, channel);
   } else {
-    var str = text.toString(text);
-    var num = DeptEngArr.indexOf(str);
-    if (num != -1 || str.charAt(str.length-1) == '부') {
+    const str = text.toString(text);
+    const num = DeptEngArr.indexOf(str);
+    if (num !== -1 || str.charAt(str.length - 1) === '부') {
       searchPlace(rtm, channel, str, num);
     } else {
       switch (text) {
