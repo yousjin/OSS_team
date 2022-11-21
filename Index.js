@@ -26,7 +26,9 @@ rtm.on('message', (message) => {
   const { channel } = message;
   const { text } = message;
 
-  if (!Number.isNaN(text)) {
+  console.log(typeof (text));
+
+  if (!Number.isNaN((Number(text)))) {
     square(rtm, text, channel);
   } else {
     const str = text.toString(text);
@@ -35,7 +37,7 @@ rtm.on('message', (message) => {
       searchPlace(rtm, channel, str, num);
     } else {
       switch (text) {
-        case 'hi':
+        case '안녕':
           greeting(rtm, channel);
           break;
         default:
