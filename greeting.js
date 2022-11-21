@@ -17,14 +17,6 @@ const greeting = function (rtm, channel) {
     default:
       return 'fail';
   }
-
-  /* try {
-    rtm.sendMessage('hello', channel);
-    return Promise.resolve('success');
-  } catch (error) {
-    console.log('error', error.data);
-    return Promise.resolve('error');
-  } */
 };
 
 module.exports = greeting;
