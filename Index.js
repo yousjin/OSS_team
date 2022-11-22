@@ -20,7 +20,7 @@ const square = require('./square');
 const schedule = require('./schedule');
 const searchPlace = require('./searchPlace');
 
-var Ishaksa = 0;
+let Ishaksa = 0;
 
 const DeptEng = 'Architectural Engineering,Mechanical Engineering,Urban Engineering,Electronic Engineering,Computer Science and Engineering,Chemical Engineering,Accounting,International Trade,Korean Language and Literature,Library and Information Science';
 const DeptEngArr = DeptEng.toString().split(',');
@@ -29,13 +29,11 @@ rtm.on('message', (message) => {
   const { channel } = message;
   const { text } = message;
 
-  if (Ishaksa==1){
+  if (Ishaksa === 1) {
     schedule(rtm, text, channel);
-    Ishaksa=0;
+    Ishaksa = 0;
     return;
   }
-
-  console.log(typeof (text));
 
   if (!Number.isNaN((Number(text)))) {
     square(rtm, text, channel);
