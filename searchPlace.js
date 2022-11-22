@@ -24,8 +24,10 @@ const searchPlace = function (rtm, channel, str, num) {
     const DePlace = DeptArr[1];
 
     rtm.sendMessage(DePlace, channel);
+    return DePlace;
   } catch (error) {
     console.log("error!", error.data);
+    return 'fail';
   }
 };
 
