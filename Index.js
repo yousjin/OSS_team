@@ -20,10 +20,9 @@ const square = require('./square');
 const schedule = require('./schedule');
 const searchPlace = require('./searchPlace');
 
-const randomNum = Math.random() * 3;
-const randomNumFloor = Math.floor(randomNum);
-let GreetingRandom = randomNumFloor;
 let Ishaksa = 0;
+let randomNum = 0;
+let randomNumFloor = 0;
 
 const DeptEng = 'Architectural Engineering,Mechanical Engineering,Urban Engineering,Electronic Engineering,Computer Science and Engineering,Chemical Engineering,Accounting,International Trade,Korean Language and Literature,Library and Information Science';
 const DeptEngArr = DeptEng.toString().split(',');
@@ -48,11 +47,9 @@ rtm.on('message', (message) => {
     } else {
       switch (text) {
         case '안녕':
-          greeting(rtm, channel, GreetingRandom);
-          GreetingRandom += 1;
-          if (GreetingRandom === 3) {
-            GreetingRandom = 0;
-          }
+          randomNum = Math.random() * 3;
+          randomNumFloor = Math.floor(randomNum);
+          greeting(rtm, channel, randomNumFloor);
           break;
         case '학사일정':
           Ishaksa = 1;
