@@ -18,6 +18,7 @@ rtm.start();
 const greeting = require('./greeting');
 const square = require('./square');
 const searchPlace = require('./searchPlace');
+const todayMenu = require('./todayMenu');
 
 const DeptEng = 'Architectural Engineering,Mechanical Engineering,Urban Engineering,Electronic Engineering,Computer Science and Engineering,Chemical Engineering,Accounting,International Trade,Korean Language and Literature,Library and Information Science';
 const DeptEngArr = DeptEng.toString().split(',');
@@ -37,6 +38,9 @@ rtm.on('message', (message) => {
       switch (text) {
         case 'hi':
           greeting(rtm, channel);
+          break;
+        case '오늘 밥 뭐야':
+          todayMenu(rtm, channel);
           break;
         default:
           rtm.sendMessage('i m alive', channel);
