@@ -8,6 +8,7 @@ const todayMenu  = function (rtm, channel) {
 
   if(day == 0 || day == 6) {
     rtm.sendMessage('오늘은 주말입니다.', channel);
+    return 'success';
   }
 
   let selector = '#restdata > table > tbody > tr:nth-child(' + day + ') > td:nth-child(2) > ul';
