@@ -1,30 +1,40 @@
-const searchPlace = function (rtm, channel, str, num) {
+/* eslint-disable quotes */
+const searchPlace = function (rtm, channel, str) {
+  const levenshtein = require('js-levenshtein');
   try {
-    var De_place;
-    const DeptKor = '건축공학부,기계공학부,도시공학부,전자공학부,컴퓨터공학부,화학공학부,회계학부,국제무역학부,국어국문학부,문헌정보학부';
-    const DeptKorArr = DeptKor.toString().split(',');
-
+    // eslint-disable-next-line global-require
     const fs = require('fs');
 
     const article = fs.readFileSync("dept.txt");
     const textSplitArr = article.toString().split("\n");
 
-    var n = num;
-    if(n == -1) {
-      n = DeptKorArr.indexOf(str);
-    }
+    let n = -1;
+    str = str + ' ';
+    str = str.replace(/(\s*)/g, "");
 
-    if (n == -1) {
+    for(i in textSplitArr) {
+      var DeptArr = textSplitArr[i].toString().split('-');
+      var text = DeptArr[0].replace(/(\s*)/g, "");
+
+      if(text.toUpperCase() == str.toUpperCase()) {
+        n = i;
+        rtm.sendMessage(DeptArr[1], channel);
+        console.log("학과 있음");
+        return 'success';
+      }
+
+      if(levenshtein(text, str) < 4) {
+        rtm.sendMessage(DeptArr[0] + "를 원하셨나요? 해당 위치는"  + DeptArr[1] + " 입니다.", channel);
+        console.log("학과 있음");
+        return 'success';
+      }
+    }
+    if (n === -1) {
       rtm.sendMessage("i m alive", channel);
     }
-    console.log("학과 있음");
-
-    DeptArr = textSplitArr[n].toString().split('-');
-    De_place = DeptArr[1];
-
-    rtm.sendMessage(De_place, channel);
-  } catch(error) {
+  } catch (error) {
     console.log("error!", error.data);
+    return 'fail';
   }
 };
 
