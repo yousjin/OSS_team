@@ -1,31 +1,33 @@
 /* eslint-disable quotes */
-const searchPlace = function (rtm, channel, str, num) {
+const searchPlace = function (rtm, channel, str) {
   try {
-    const DeptKor = '건축공학부,기계공학부,도시공학부,전자공학부,컴퓨터공학부,화학공학부,회계학부,국제무역학부,국어국문학부,문헌정보학부';
-    const DeptKorArr = DeptKor.toString().split(',');
-
     // eslint-disable-next-line global-require
     const fs = require('fs');
 
     const article = fs.readFileSync("dept.txt");
     const textSplitArr = article.toString().split("\n");
 
-    let n = num;
-    if (n === -1) {
-      n = DeptKorArr.indexOf(str);
+    let n = -1;
+    str = str.replace(/(\s*)/g, "");
+
+    for(i in textSplitArr) {
+      var DeptArr = textSplitArr[i].toString().split('-');
+      var text = DeptArr[0].replace(/(\s*)/g, "");
+
+      if(text.toUpperCase() == str.toUpperCase()) {
+          n = i;
+          rtm.sendMessage(DeptArr[1], channel);
+          console.log("학과 있음");
+          return DeptArr[1];
+        }
     }
 
     if (n === -1) {
       rtm.sendMessage("i m alive", channel);
     }
-    console.log("학과 있음");
-
-    const DeptArr = textSplitArr[n].toString().split('-');
-    const DePlace = DeptArr[1];
-
-    rtm.sendMessage(DePlace, channel);
   } catch (error) {
     console.log("error!", error.data);
+    return 'fail';
   }
 };
 

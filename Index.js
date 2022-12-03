@@ -20,10 +20,9 @@ const square = require('./square');
 const schedule = require('./schedule');
 const searchPlace = require('./searchPlace');
 
-let Ishaksa = 0;
+var pattern = /^[a-zA-Z]/; //feature4 영문 확인 시 사용
 
-const DeptEng = 'Architectural Engineering,Mechanical Engineering,Urban Engineering,Electronic Engineering,Computer Science and Engineering,Chemical Engineering,Accounting,International Trade,Korean Language and Literature,Library and Information Science';
-const DeptEngArr = DeptEng.toString().split(',');
+let Ishaksa = 0;
 
 rtm.on('message', (message) => {
   const { channel } = message;
@@ -39,9 +38,8 @@ rtm.on('message', (message) => {
     square(rtm, text, channel);
   } else {
     const str = text.toString(text);
-    const num = DeptEngArr.indexOf(str);
-    if (num !== -1 || str.charAt(str.length - 1) === '부') {
-      searchPlace(rtm, channel, str, num);
+    if (pattern.test(str)) {
+      searchPlace(rtm, channel, str);
     } else {
       switch (text) {
         case '안녕':
