@@ -36,9 +36,6 @@ rtm.on('message', (message) => {
         case 'hi':
           greeting(rtm, channel);
           break;
-        case '오늘 밥 뭐야':
-          todayMenu(rtm, channel);
-          break;
         default:
           rtm.sendMessage('i m alive', channel);
       }
