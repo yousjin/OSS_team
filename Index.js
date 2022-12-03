@@ -18,10 +18,8 @@ rtm.start();
 const greeting = require('./greeting');
 const square = require('./square');
 const searchPlace = require('./searchPlace');
-const todayMenu = require('./todayMenu');
 
-const DeptEng = 'Architectural Engineering,Mechanical Engineering,Urban Engineering,Electronic Engineering,Computer Science and Engineering,Chemical Engineering,Accounting,International Trade,Korean Language and Literature,Library and Information Science';
-const DeptEngArr = DeptEng.toString().split(',');
+var pattern = /^[a-zA-Z]/; //feature4 영문 확인 시 사용
 
 rtm.on('message', (message) => {
   const { channel } = message;
@@ -30,10 +28,9 @@ rtm.on('message', (message) => {
   if (!isNaN(text)) {
     square(rtm, text, channel);
   } else {
-    var str = text.toString(text);
-    var num = DeptEngArr.indexOf(str);
-    if (num != -1 || str.charAt(str.length-1) == '부') {
-      searchPlace(rtm, channel, str, num);
+    const str = text.toString(text);
+    if (pattern.test(str)) {
+      searchPlace(rtm, channel, str);
     } else {
       switch (text) {
         case 'hi':
