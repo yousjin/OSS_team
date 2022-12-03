@@ -19,6 +19,7 @@ const greeting = require('./greeting');
 const square = require('./square');
 const schedule = require('./schedule');
 const searchPlace = require('./searchPlace');
+const todayMenu = require('./todayMenu');
 
 let Ishaksa = 0;
 
@@ -46,6 +47,9 @@ rtm.on('message', (message) => {
       switch (text) {
         case '안녕':
           greeting(rtm, channel);
+          break;
+        case '오늘 밥 뭐야':
+          todayMenu(rtm, channel);
           break;
         case '학사일정':
           Ishaksa = 1;
