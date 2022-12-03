@@ -24,7 +24,7 @@ const searchPlace = function (rtm, channel, str) {
       }
 
       if(levenshtein(text, str) < 4) {
-        rtm.sendMessage(DeptArr[0] + "를 원하셨나요? 해당 위치는 "  + DeptArr[1] + " 입니다.", channel);
+        rtm.sendMessage(DeptArr[0] + "를 원하셨나요? 해당 위치는"  + DeptArr[1] + " 입니다.", channel);
         console.log("학과 있음");
         return 'success';
       }
