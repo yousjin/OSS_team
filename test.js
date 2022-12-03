@@ -23,7 +23,7 @@ const rtm = new RTMClient(token);
 })();
 
 const assert = require('assert');
-const greeting = require('./searchPlace');
+const searchPlace = require('./searchPlace');
 
 describe('searchPlace 함수 테스트', () => {
     it('장소 반환', () => {
