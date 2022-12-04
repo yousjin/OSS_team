@@ -19,6 +19,7 @@ const greeting = require('./greeting');
 const square = require('./square');
 const schedule = require('./schedule');
 const searchPlace = require('./searchPlace');
+const todayMenu = require('./todayMenu');
 
 let Ishaksa = 0;
 let randomNum = 0;
@@ -48,6 +49,9 @@ rtm.on('message', (message) => {
           randomNum = Math.random() * 3;
           randomNumFloor = Math.floor(randomNum);
           greeting(rtm, channel, randomNumFloor);
+          break;
+        case '오늘 밥 뭐야':
+          todayMenu(rtm, channel);
           break;
         case '학사일정':
           Ishaksa = 1;
