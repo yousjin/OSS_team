@@ -1,8 +1,26 @@
-# JBNU ChatBot
-<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white"/> [![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE)
+# JBNU ChatBot 
+![Generic badge](https://img.shields.io/badge/Node.js-18.12.1-green.svg) ![Generic badge](https://img.shields.io/badge/NPM-8.19.2-orange.svg)
 
-## 이 프로그램은 전북대학교 학생들은 위한 챗봇 프로그램으로 학생들의 질문에 대한 여러 정보를 제공합니다.
+- [개요](#개요)
+- [기능 소개](#기능-소개)
+- [개발 환경 설정](#개발-환경-설정-)
+- [챗봇 실행 방법](#챗봇-실행-방법-)
+- [주요 파일 설명](#주요-파일-설명)
+- [브랜치 설명](#브랜치-설명)
+- [기여 방법](#기여-방법)
+- [기여자](#기여자)
+- [Licence](#licence)
+
 ------
+
+## 개요
+
+![image](https://user-images.githubusercontent.com/104759146/205476422-bbfefdbc-8909-4ffb-a6e8-2dfc3313a471.png)
+
+이는 전북대학교 오픈소스 소프트웨어 개발 수업 팀 프로젝트 과제입니다.  
+해당 프로그램은 전북대학교 학생들은 위한 챗봇 프로그램으로 아래의 기능을 제공합니다.  
+
+
 ## 기능 소개
 1. 인삿말 출력
 
@@ -14,21 +32,22 @@
 2. 질문한 학과 사무실 위치 출력
 
     '학과 안내'를 입력하면 영문 학과 검색이 가능합니다.
-    대/소문자와 띄어쓰기를 허용하며 4글자 미만의 오타를 허용합니다. (단, 오타는 대/소문자를 허용하지 않습니다. 띄어쓰기는 허용합니다.)
+    대/소문자와 띄어쓰기를 허용하며 4글자 미만의 오타를 허용합니다.  
+    (단, 오타는 대/소문자를 허용하지 않습니다. 띄어쓰기는 허용합니다.)
     
     ![image](https://user-images.githubusercontent.com/104759146/205444904-09017e35-4317-4ab9-9813-218bc6bcd045.png)
 
     
  3. 질문한 요일에 대한 학사 일정 출력
  
-    '학사일정'을 입력하고 '안내 받을 날짜를 입력해주세요.'라는 메세지가 뜨면 날짜를 입력하고, 입력받은 날짜에 대한 학사일정을 출력합니다.
-    (단, 날짜는 달(month)/일(day) 형태로 입력해야 합니다.)
+    '학사일정'을 입력하면 '안내 받을 날짜를 입력해주세요.'라는 메세지가 출력됩니다.   
+    이 때 날짜를 입력할 시 해당 학사 일정을 출력합니다. (단, 날짜는 달(month)/일(day) 형태로 입력해야 합니다.)
     
     <img src = "https://user-images.githubusercontent.com/102170468/203550652-e1cac153-9830-4aab-83a8-8ab093312f70.png" width = "50%" height = "50%">
 
 
  4. 오늘 진수원 중식 메뉴 출력
-    '오늘 밥 뭐야'를 입력하면 오늘의 진수원 중식 메뉴와 평점을 출력합니다. 주말에는 '오늘은 주말입니다.' 메시지가 출력됩니다.
+    '오늘 밥 뭐야'를 입력하면 오늘의 진수원 중식 메뉴와 평점을 출력합니다. (주말은 '오늘은 주말입니다.' 출력)   
     '이번주 뭐 나와'를 검색하면 이번주 진수원 중식 식단 평점이 출력됩니다.
     
     
@@ -54,8 +73,7 @@ npm install cheerio
 npm install --save js-levenshtein
 ```
 
-<details><summary><b>npm 오류 발생시</b></summary>
-
+<details><summary><b>npm 오류 발생시</b></summary>   
 아래의 코드를 따라하세요.
 
 ```
@@ -67,10 +85,13 @@ npm i -g npm
 </details>
 
 
-## 챗봇 실행 방법
+## 챗봇 실행 방법 <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=Node.js&logoColor=white"/>
 ```
 node Index.js
-//혹은 nodejs Index.js
+```
+혹은
+```
+nodejs Index.js
 ```
 
 ## 주요 파일 설명
@@ -83,19 +104,31 @@ node Index.js
 - haksa.txt : 학사일정 정보 파일
 - unit_test.js : 각 기능 유닛테스트 코드
 
-## 기여 방법
-먼저 현재 저장소를 fork를 한 뒤 위의 개발 환경 설정을 마쳐주세요.
 
-그 다음 브랜치를 확인합니다. OSS_team 의 브랜치는 기능별로 나뉘어져 있으므로 개발은 해당 feature 브랜치에서 진행해주세요.
+## 브랜치 설명
+`아래의 브랜치로는 PR을 진행할 수 없습니다.`   
+    - main: 기본 브랜치, Develop에서 테스트를 마친 코드가 올라옵니다.  
+    - Develop: 각 기능들이 merge됩니다.  
 
-만약 현재 브랜치가 생성되지 않았다면
+ 
+`실제 작업 브랜치 (PR가능)`   
+    - feature: 기능 외 Readme.md 등의 파일  
+    - feature1: 인사 기능   
+    - feature2: 전북대 학사일정   
+    - feature3: 진수원 중식 메뉴 안내  
+    - feature4: 학과 사무실 안내  
+
+
+## 기여 방법   
+먼저 현재 저장소를 fork를 한 뒤 위의 [개발 환경 설정](#개발-환경-설정-)을 마쳐주세요.   
+그 다음 브랜치를 확인합니다. OSS_team 의 브랜치는 기능별로 나뉘어져 있으므로 개발은 해당 feature 브랜치에서 진행해주세요.   
+만약 새로운 브랜치가 필요하다면  
 
 ```
-git checkout -b <featureN> //(N 에는 숫자가 들어갑니다.)
+git checkout -b <브랜치명>
 ```
 
-형식으로 브랜치 생성 후 작업하시길 바랍니다.
-
+형식으로 브랜치 생성 후 작업하시길 바랍니다.   
 작업을 완료하면
 
 ```
@@ -120,6 +153,7 @@ git push origin <브랜치명>
     - pull request 제목 또한 커밋 메세지와 같은 형식으로 적어주세요.
     - 내용에는 수정한 내용을 자세하게 적어주세요.
 
+
 ## 기여자
 <a href="https://github.com/yousjin/OSS_team/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=yousjin/OSS_team" />
@@ -127,3 +161,6 @@ git push origin <브랜치명>
 
  &nbsp;&nbsp;[천세준](https://github.com/blackligt)&nbsp;&nbsp;&nbsp;&nbsp;[유성진](https://github.com/yousjin)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[김세현](https://github.com/Seheyon)
 
+
+## Licence
+[![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE)
