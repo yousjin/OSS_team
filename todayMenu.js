@@ -1,6 +1,8 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable global-require */
 
+const rating = require('./rating');
+
 const todayMenu = function (rtm, channel) {
   const axios = require('axios');
   const cheerio = require('cheerio');
@@ -47,6 +49,7 @@ const todayMenu = function (rtm, channel) {
       for (let i = 0; i < res.length; i += 1) {
         rtm.sendMessage(res[i], channel);
       }
+      rating(res, rtm, channel);
     });
   }
 };
