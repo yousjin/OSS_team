@@ -52,6 +52,7 @@ const todayMenu = function (rtm, channel) {
       rating(res, rtm, channel);
     });
   }
+  return 'success';
 };
 
 module.exports = todayMenu;
