@@ -31,7 +31,12 @@ rtm.on('message', (message) => {
     square(rtm, text, channel);
   } else {
     const str = text.toString(text);
-    if (pattern.test(str) && IsSearch === 1) {
+    if (IsSearch === 1) {
+      if (!(pattern.test(str))) {
+        rtm.sendMessage('i m alive', channel);
+        IsSearch = 0;
+        return;
+      }
       searchPlace(rtm, channel, str);
       IsSearch = 0;
     } else {
