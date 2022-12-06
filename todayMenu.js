@@ -46,6 +46,7 @@ const todayMenu = function (rtm, channel) {
     const selector = `#contents > div.contentsArea.WeekMenu > div:nth-child(245) > div:nth-child(2) > table > tbody > tr:nth-child(1) > td:nth-child(${daynum})`;
 
     webScraping(url, selector).then((res) => {
+      console.log(res);
       for (let i = 0; i < res.length; i += 1) {
         rtm.sendMessage(res[i], channel);
       }
