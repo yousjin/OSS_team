@@ -24,6 +24,6 @@ jobs:
       run: |
         npm install mocha -g
         npm i dotenv
-        mocha test.js
+        mocha unit_test.js --exit
       env:
         CI: true

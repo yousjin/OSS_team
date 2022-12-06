@@ -1,4 +1,4 @@
-Architectural Engineering -  College of Engineering Building 1, 132
+Architectural Engineering - College of Engineering Building 1, 132
 Mechanical Engineering - College of Engineering Building 4, 212
 Urban Engineering - College of Engineering Building 9, 917
 Electronic Engineering - College of Engineering Building 7, 224
