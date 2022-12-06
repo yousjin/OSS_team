@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 const { RTMClient } = require('@slack/rtm-api');
 
 const fs = require('fs');
@@ -25,6 +26,7 @@ let Ishaksa = 0;
 let randomNum = 0;
 let randomNumFloor = 0;
 
+let IsSearch = 0;
 const pattern = /^[a-zA-Z]/; // feature4 영문 확인 시 사용
 
 rtm.on('message', (message) => {
@@ -41,8 +43,14 @@ rtm.on('message', (message) => {
     square(rtm, text, channel);
   } else {
     const str = text.toString(text);
-    if (pattern.test(str)) {
+    if (IsSearch === 1) {
+      if (!(pattern.test(str))) {
+        rtm.sendMessage('i m alive', channel);
+        IsSearch = 0;
+        return;
+      }
       searchPlace(rtm, channel, str);
+      IsSearch = 0;
     } else {
       switch (text) {
         case '안녕':
@@ -56,6 +64,10 @@ rtm.on('message', (message) => {
         case '학사일정':
           Ishaksa = 1;
           rtm.sendMessage('안내 받을 날짜를 입력해주세요.', channel);
+          break;
+        case '학과 안내':
+          IsSearch = 1;
+          rtm.sendMessage('안내 받을 학과를 입력해주세요.', channel);
           break;
         default:
           rtm.sendMessage('i m alive', channel);
