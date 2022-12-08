@@ -19,6 +19,8 @@ const greeting = require('./greeting');
 const square = require('./square');
 const schedule = require('./schedule');
 const searchPlace = require('./searchPlace');
+const todayMenu = require('./todayMenu');
+const weeklyMenu = require('./weeklyMenu');
 
 var pattern = /^[a-zA-Z]/; //feature4 영문 확인 시 사용
 
@@ -44,6 +46,12 @@ rtm.on('message', (message) => {
       switch (text) {
         case '안녕':
           greeting(rtm, channel);
+          break;
+        case '오늘 밥 뭐야':
+          todayMenu(rtm, channel);
+          break;
+        case '이번주 뭐 나와':
+          weeklyMenu(rtm, channel);
           break;
         case '학사일정':
           Ishaksa = 1;
