@@ -1,4 +1,4 @@
-const rating = function (menu, rtm, channel) {
+const rating = function (menu) {
   const menuArr = menu.toString().split(',');
 
   const prefer = '닭,돼지,고기,치즈,두부,짬뽕,오리,소,파스타,새우';
@@ -24,12 +24,14 @@ const rating = function (menu, rtm, channel) {
   }
 
   if (score <= 1) {
-    rtm.sendMessage('★☆☆', channel);
-  } else if (score === 2) {
-    rtm.sendMessage('★★☆', channel);
-  } else if (score >= 3) {
-    rtm.sendMessage('★★★', channel);
+    return '★☆☆';
+  } if (score === 2) {
+    return '★★☆';
+  } if (score >= 3) {
+    return '★★★';
   }
+
+  return '';
 };
 
 module.exports = rating;

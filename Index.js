@@ -21,6 +21,7 @@ const square = require('./square');
 const schedule = require('./schedule');
 const searchPlace = require('./searchPlace');
 const todayMenu = require('./todayMenu');
+const weeklyMenu = require('./weeklyMenu');
 
 let Ishaksa = 0;
 let randomNum = 0;
@@ -45,7 +46,7 @@ rtm.on('message', (message) => {
     const str = text.toString(text);
     if (IsSearch === 1) {
       if (!(pattern.test(str))) {
-        rtm.sendMessage('i m alive', channel);
+        rtm.sendMessage('학과 명은 영문으로만 입력해주세요.', channel);
         IsSearch = 0;
         return;
       }
@@ -60,6 +61,9 @@ rtm.on('message', (message) => {
           break;
         case '오늘 밥 뭐야':
           todayMenu(rtm, channel);
+          break;
+        case '이번주 뭐 나와':
+          weeklyMenu(rtm, channel);
           break;
         case '학사일정':
           Ishaksa = 1;
