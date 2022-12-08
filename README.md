@@ -1,5 +1,5 @@
 # JBNU ChatBot 
-![Generic badge](https://img.shields.io/badge/Node.js-18.12.1-green.svg) ![Generic badge](https://img.shields.io/badge/NPM-8.19.2-orange.svg)
+![Generic badge](https://img.shields.io/badge/Node.js-18.11.0-green.svg) ![Generic badge](https://img.shields.io/badge/NPM-8.19.2-orange.svg)
 
 - [개요](#개요)
 - [기능 소개](#기능-소개)
@@ -32,10 +32,9 @@
 2. 질문한 학과 사무실 위치 출력
 
     '학과 안내'를 입력하면 영문 학과 검색이 가능합니다.
-    대/소문자와 띄어쓰기를 허용하며 4글자 미만의 오타를 허용합니다.  
-    (단, 오타는 대/소문자를 허용하지 않습니다. 띄어쓰기는 허용합니다.)
+    대/소문자와 띄어쓰기, 4글자 미만의 오타를 허용합니다.  
     
-    ![image](https://user-images.githubusercontent.com/104759146/205444904-09017e35-4317-4ab9-9813-218bc6bcd045.png)
+    <img src = "https://user-images.githubusercontent.com/104759146/206203574-f72bc9f2-fd42-4cc6-8202-7d32521eee90.png" width = "65%" height = "65%" >
 
     
  3. 질문한 요일에 대한 학사 일정 출력
@@ -50,7 +49,9 @@
     '오늘 밥 뭐야'를 입력하면 오늘의 진수원 중식 메뉴와 평점을 출력합니다. (주말은 '오늘은 주말입니다.' 출력)   
     '이번주 뭐 나와'를 검색하면 이번주 진수원 중식 식단 평점이 출력됩니다.
     
-    
+    <img src = "https://user-images.githubusercontent.com/104759146/206356355-a5156a0c-8233-4f6c-bdc2-c593580550d4.png" width = "30%" height = "30%">
+    <img src = "https://user-images.githubusercontent.com/104759146/206356326-2a3f7654-fb84-4921-a9fc-a4ce9b5701e9.png" width = "30%" height = "30%">
+
     
 
 ## 개발 환경 설정 ![OS](https://img.shields.io/badge/OS-Linux-red?style=flat&logo=linux)
@@ -96,23 +97,27 @@ nodejs Index.js
 
 ## 주요 파일 설명
 - Index.js : 챗봇 프로그램을 실행시키는 메인 파일
-- greeting.js : 인삿말을 출력하는 모듈
+- square.js : 숫자를 제곱하여 출력하는 모듈
+- greeting.js : 인삿말 출력하는 모듈
 - searchPlace.js : 학과 사무실 위치를 알려주는 모듈
 - schedule.js : 학사 일정을 알려주는 모듈
 - todayMenu.js : 진수당 중식 메뉴와 별점을 출력하는 모듈
+- getMenu.js : 크롤링 모듈
+- rating.js : 메뉴에 따라 별점 부여 모듈
+- weeklyMenu.js : 주간 중식 메뉴 별점 출력 모듈
 - dept.txt : 학과 사무실 위치 정보 파일
 - haksa.txt : 학사일정 정보 파일
 - unit_test.js : 각 기능 유닛테스트 코드
 
 
 ## 브랜치 설명
-`아래의 브랜치로는 PR을 진행할 수 없습니다.`   
+`아래의 브랜치로는 PR을 추천드리지 않습니다.`   
     - main: 기본 브랜치, Develop에서 테스트를 마친 코드가 올라옵니다.  
     - Develop: 각 기능들이 merge됩니다.  
 
  
-`실제 작업 브랜치 (PR가능)`   
-    - feature: 기능 외 Readme.md 등의 파일  
+`실제 작업 브랜치`   
+    - feature: 기능 외 Readme.md, unit_test.js 등의 파일  
     - feature1: 인사 기능   
     - feature2: 전북대 학사일정   
     - feature3: 진수원 중식 메뉴 안내  
@@ -122,13 +127,13 @@ nodejs Index.js
 ## 기여 방법   
 먼저 현재 저장소를 fork를 한 뒤 위의 [개발 환경 설정](#개발-환경-설정-)을 마쳐주세요.   
 그 다음 브랜치를 확인합니다. OSS_team 의 브랜치는 기능별로 나뉘어져 있으므로 개발은 해당 feature 브랜치에서 진행해주세요.   
-만약 새로운 브랜치가 필요하다면  
+만약 새로운 브랜치가 필요하다면 Develop 브랜치에서
 
 ```
 git checkout -b <브랜치명>
 ```
 
-형식으로 브랜치 생성 후 작업하시길 바랍니다.   
+위의 명령어를 통해 브랜치 생성 후 작업하시길 바랍니다.   
 작업을 완료하면
 
 ```
@@ -146,9 +151,12 @@ git push origin <브랜치명>
     - 버그와 관련된 이슈는 해당 문제 이미지를 첨부하여 상황을 정확히 알려주세요.
     - Label 과 Milestones를 이슈 생성 시 꼭 지정해주세요.
     - 커밋과 PR을 하기 전에 먼저 이슈를 생성해주세요.
+    
 2. 커밋 시
     - 커밋 메세지는 '#(이슈번호) (커밋 형태) : 한글로 변경된 사항을 간략히' 와 같은 형식으로 적어주세요.
     - 커밋 형태 예시 : feat(기능 구현), fix(코드 수정), merge(머지), add(파일 추가), error(에러 수정)
+    - 만약 코드 리펙토링, merge의 경우는 이슈 번호를 생략하고 # 만 사용
+    
 3. Pull Request 시
     - pull request 제목 또한 커밋 메세지와 같은 형식으로 적어주세요.
     - 내용에는 수정한 내용을 자세하게 적어주세요.
