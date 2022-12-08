@@ -14,13 +14,14 @@ const weeklyMenu = function (rtm, channel) {
 
   async function asyncForEach(callback) {
     for (let i = 1; i < 6; i += 1) {
-      const res = await callback(i);
-      dayRating[i] = rating(res, rtm, channel);
+      const res = await callback(i + 2);
+      dayRating[i] = rating(res);
       rtm.sendMessage(`${dayList[i]} : ${dayRating[i]}`, channel);
     }
   }
 
   asyncForEach(getMenu);
+  return 'success';
 };
 
 module.exports = weeklyMenu;

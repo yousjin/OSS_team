@@ -11,21 +11,21 @@ const todayMenu = function (rtm, channel) {
 
   const today = new Date();
   const day = today.getDay();
-  // const day = 3; // => 수요일
+  // const day = 6; // => 수요일
 
   if (day === 0 || day === 6) {
     rtm.sendMessage('오늘은 주말입니다.', channel);
-  } else {
-    const daynum = dayDict[day];
-    getMenu(daynum).then((res) => {
-      for (let i = 0; i < res.length; i += 1) {
-        rtm.sendMessage(res[i], channel);
-      }
-      const rate = rating(res, rtm, channel);
-      rtm.sendMessage(rate, channel);
-    });
+    return '오늘은 주말입니다.';
   }
-  return 'success';
+  const daynum = dayDict[day];
+  getMenu(daynum).then((res) => {
+    for (let i = 0; i < res.length; i += 1) {
+      rtm.sendMessage(res[i], channel);
+    }
+    const rate = rating(res);
+    rtm.sendMessage(rate, channel);
+  });
+  return '오늘의 메뉴';
 };
 
 module.exports = todayMenu;
