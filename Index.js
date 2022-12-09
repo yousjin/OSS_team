@@ -46,7 +46,7 @@ rtm.on('message', (message) => {
     const str = text.toString(text);
     if (IsSearch === 1) {
       if (!(pattern.test(str))) {
-        rtm.sendMessage('i m alive', channel);
+        rtm.sendMessage('학과 명은 영문으로만 입력해주세요.', channel);
         IsSearch = 0;
         return;
       }
