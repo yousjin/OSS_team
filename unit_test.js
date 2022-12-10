@@ -26,7 +26,12 @@ const assert = require('assert');
 const greeting = require('./greeting');
 const schedule = require('./schedule');
 const searchPlace = require('./searchPlace');
+const rating = require('./rating');
+const getMenu = require('./getMenu');
 const todayMenu = require('./todayMenu');
+const weeklyMenu = require('./weeklyMenu');
+
+let menu = [];
 
 describe('테스트 시작', () => {
   describe('greeting 함수 테스트', () => {
@@ -62,12 +67,34 @@ describe('테스트 시작', () => {
     });
   });
 
+  describe('getMenu 함수 테스트', () => {
+    it('메뉴 반환', () => {
+      console.log('메뉴 반환 확인');
+      for (let i = 1; i < 6; i += 1) {
+        assert.ok(getMenu(i) !== null);
+      }
+    });
+  });
+
+  describe('rating 함수 테스트', () => {
+    it('평가 반환', () => {
+      console.log('평가 표시');
+      menu = getMenu(3);
+      assert.ok(rating(menu), '★☆☆' || rating(menu), '★★☆' || rating(menu), '★★★');
+    });
+  });
+
   describe('todayMenu 함수 테스트', () => {
+    it('메뉴 반환', () => {
+      console.log('식단 표시');
+      assert.ok(todayMenu(rtm, channel), '오늘의 메뉴' || todayMenu(rtm, channel), '오늘은 주말입니다.');
+    });
+  });
+
+  describe('weeklyMenu 함수 테스트', () => {
     it('메뉴,평가 반환', () => {
-      console.log('평일 식단 표시');
-      assert.equal(todayMenu(rtm, channel), 'success');
-      console.log('주말 식단 표시');
-      assert.equal(todayMenu(rtm, channel), 'success');
+      console.log('주간 평가 표시');
+      assert.equal(weeklyMenu(rtm, channel), 'success');
     });
   });
 });
