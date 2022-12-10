@@ -32,7 +32,6 @@ const todayMenu = require('./todayMenu');
 const weeklyMenu = require('./weeklyMenu');
 
 let menu = [];
-let rate = '';
 
 describe('테스트 시작', () => {
   describe('greeting 함수 테스트', () => {
@@ -71,16 +70,17 @@ describe('테스트 시작', () => {
   describe('getMenu 함수 테스트', () => {
     it('메뉴 반환', () => {
       console.log('메뉴 반환 확인');
-      menu = getMenu(rtm, channel);
-      assert.ok(getMenu(rtm, channel) !== null);
+      for (let i = 1; i < 6; i += 1) {
+        assert.ok(getMenu(i) !== null);
+      }
     });
   });
 
   describe('rating 함수 테스트', () => {
     it('평가 반환', () => {
       console.log('평가 표시');
-      rate = rating(menu);
-      assert.ok(rating(menu), rate);
+      menu = getMenu(3);
+      assert.ok(rating(menu), '★☆☆' || rating(menu), '★★☆' || rating(menu), '★★★');
     });
   });
 
