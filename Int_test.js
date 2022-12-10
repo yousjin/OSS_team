@@ -90,7 +90,7 @@ rtm.on('message', (message) => {
         status += 1;
         break;
       case 6:
-        console.log(text);
+        console.log('받은 메세지 : ', text);
         if (text !== []) {
           console.log("식단출력 테스트 성공");
         } else {
@@ -102,7 +102,7 @@ rtm.on('message', (message) => {
         status += 1;
         break;
       case 11:
-        console.log(text);
+        console.log('받은 메세지 : ', text);
         if (text === '월 : ★☆☆' || text === "월 : ★★☆" || text === '월 : ★★★') {
           console.log("주간 메뉴 평가 테스트 성공");
         } else {
