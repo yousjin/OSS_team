@@ -5,14 +5,15 @@ const getMenu = async function (daynum) {
   const cheerio = require('cheerio');
 
   const url = 'https://sobi.chonbuk.ac.kr/menu/week_menu.php';
-  const selector = `#contents > div.contentsArea.WeekMenu > div:nth-child(247) > div:nth-child(2) > table > tbody > tr:nth-child(1) > td:nth-child(${daynum}) > ul`;
+  const selector = '#contents > div.contentsArea.WeekMenu';
   const res = [];
   let html;
   let $;
+
   try {
     html = await axios.get(url);
     $ = cheerio.load(html.data);
-    for (const v of $(selector).find('li')) {
+    for (const v of $(selector).find('ul')) {
       if ($(v).text() !== '') {
         res.push($(v).text());
       }
@@ -20,7 +21,11 @@ const getMenu = async function (daynum) {
   } catch (error) {
     console.error(error);
   }
-  return res;
+
+  const temp = res[daynum - 1];
+  let menuList = temp.split('\n');
+  menuList = menuList.filter((item) => item !== '' && item !== '\n');
+  return menuList;
 };
 
 module.exports = getMenu;
