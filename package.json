@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@slack/rtm-api": "^6.0.0",
-    "axios": "^1.2.0",
+    "axios": "^1.2.1",
     "cheerio": "^1.0.0-rc.12",
     "dotenv": "^16.0.3",
     "js-levenshtein": "^1.1.6",
