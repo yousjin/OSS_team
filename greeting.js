@@ -1,30 +1,19 @@
-const greeting = function (rtm, channel) {
+const greeting = function (rtm, channel, GreetingRandom) {
   console.log('인사를 합니다.');
 
-  const randomNum = Math.random() * 3;
-  const randomNumFloor = Math.floor(randomNum);
-
-  switch (randomNumFloor) {
+  switch (GreetingRandom) {
     case 0:
       rtm.sendMessage('안녕하세요!', channel);
-      return 'success';
+      return '안녕하세요!';
     case 1:
       rtm.sendMessage('좋은 하루입니다!', channel);
-      return 'success';
+      return '좋은 하루입니다!';
     case 2:
       rtm.sendMessage('반가워요!', channel);
-      return 'success';
+      return '반가워요!';
     default:
       return 'fail';
   }
-
-  /* try {
-    rtm.sendMessage('hello', channel);
-    return Promise.resolve('success');
-  } catch (error) {
-    console.log('error', error.data);
-    return Promise.resolve('error');
-  } */
 };
 
 module.exports = greeting;
