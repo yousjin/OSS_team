@@ -13,17 +13,17 @@ const getMenu = async function (daynum) {
   try {
     html = await axios.get(url);
     $ = cheerio.load(html.data);
-    for (const v of $(selector).find('ul')) {
+    for (const v of $(selector).find('span')) {
       if ($(v).text() !== '') {
+        console.log($(v).text());
         res.push($(v).text());
       }
     }
   } catch (error) {
     console.error(error);
   }
-
-  const temp = res[daynum - 1];
-  let menuList = temp.split('\n');
+  const dayindex = daynum * 4;
+  let menuList = res.slice(dayindex, dayindex + 4);
   menuList = menuList.filter((item) => item !== '' && item !== '\n');
   return menuList;
 };
